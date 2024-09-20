@@ -1,0 +1,50 @@
+/* public/styles.css */
+
+body {
+    font-family: 'Verdana', sans-serif;
+    padding: 30px; /* Increased padding */
+    background-color: #f0f4c3; /* Light green background */
+    max-width: 650px; /* Slightly wider */
+    margin: auto;
+    color: #424242; /* Dark grey text color */
+}
+
+input, textarea {
+    display: block;
+    margin: 12px 0; /* Increased margin */
+    padding: 12px; /* Increased padding */
+    width: 100%;
+    border: 1px solid #9e9e9e; /* Grey border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #ffffff; /* White background for inputs */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+button {
+    padding: 12px;
+    background-color: #ff7043; /* Warm orange background */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded button */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e64a19; /* Darker orange on hover */
+}
+
+div {
+    margin-bottom: 25px; /* Increased margin */
+}
+
+#posts div {
+    border-bottom: 1px solid #bdbdbd; /* Softer grey border */
+    padding: 15px 0; /* Increased padding for posts */
+    background-color: #e8f5e9; /* Light green background for posts */
+    border-radius: 8px; /* Rounded post boxes */
+}
+
+#posts div:hover {
+    background-color: #dcedc8; /* Slightly darker green on hover */
+}
