@@ -22,16 +22,12 @@ h1 {
     color: #00695c; /* Dark teal */
 }
 
-form {
-    display: flex;
-}
-
 input[type="text"] {
-    flex: 1;
+    width: 100%;
     padding: 12px; /* Increased padding */
     border: 1px solid #bbb; /* Softer border color */
     border-radius: 8px; /* More rounded */
-    margin-right: 15px; /* Increased space between input and button */
+    margin-bottom: 15px; /* Increased space between input and button */
 }
 
 button {
@@ -42,6 +38,7 @@ button {
     border-radius: 8px; /* Match input */
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
 button:hover {
@@ -61,6 +58,7 @@ li {
     margin-bottom: 12px; /* Increased margin between items */
     display: flex;
     justify-content: space-between;
+    align-items: center;
     transition: background-color 0.3s ease;
 }
 
@@ -71,4 +69,18 @@ li:hover {
 .completed {
     text-decoration: line-through;
     color: #9e9e9e; /* Lighter grey */
+}
+
+.edit-btn, .delete-btn {
+    margin-left: 10px;
+    background-color: #ff7043; /* Button color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 8px;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    background-color: #d84315; /* Darker on hover */
 }
