@@ -1,77 +1,56 @@
+ const taskInput = document.getElementById('taskInput');
+const taskList = document.getElementById('taskList');
 
-document.addEventListener('DOMContentLoaded', () => {
-    const todoForm = document.getElementById('todo-form');
-    const todoInput = document.getElementById('todo-input');
-    const todoList = document.getElementById('todo-list');
-
-    // Fetch and display todos on load
-    fetch('/api/todos')
-        .then(response => response.json())
-        .then(todos => {
-            todos.forEach(todo => {
-                addTodoToList(todo);
-            });
-        });
-
-    // Handle form submission
-    todoForm.addEventListener('submit', event => {
-        event.preventDefault();
-        const task = todoInput.value.trim();
-
-        if (task) {
-            fetch('/api/todos', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ task })
-            })
-            .then(response => response.json())
-            .then(todo => {
-                addTodoToList(todo);
-                todoInput.value = '';
-            });
-        }
-    });
-
-    // Add todo item to the DOM
-    function addTodoToList(todo) {
+// Function to add a new task to the list
+function addTask() {
+    const taskText = taskInput.value.trim();
+    if (taskText !== '') {
         const li = document.createElement('li');
-        li.textContent = todo.task;
-        li.dataset.id = todo._id;
+        li.textContent = taskText;
+        
+        // Add event listener for task completion
+        li.addEventListener('click', completeTask);
+        
+        // Create and append Edit button
+        const editBtn = document.createElement('button');
+        editBtn.textContent = 'Edit';
+        editBtn.classList.add('edit-btn');
+        editBtn.addEventListener('click', editTask);
+        li.appendChild(editBtn);
 
-        if (todo.completed) {
-            li.classList.add('completed');
-        }
+        // Create and append Delete button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.addEventListener('click', deleteTask);
+        li.appendChild(deleteBtn);
 
-        li.addEventListener('click', () => {
-            fetch(`/api/todos/${todo._id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ completed: !todo.completed })
-            })
-            .then(response => response.json())
-            .then(updatedTodo => {
-                li.classList.toggle('completed', updatedTodo.completed);
-            });
-        });
-
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.style.marginLeft = '10px';
-        deleteButton.addEventListener('click', event => {
-            event.stopPropagation();
-            fetch(`/api/todos/${todo._id}`, {
-                method: 'DELETE'
-            })
-            .then(() => {
-                li.remove();
-            });
-        });
-
-        li.appendChild(deleteButton);
-        todoList.appendChild(li);
+        taskList.appendChild(li);
+        taskInput.value = '';
     }
-});
+}
+
+// Handle task completion
+function completeTask(event) {
+    const task = event.target;
+    task.classList.toggle('completed');
+}
+
+// Handle task deletion
+function deleteTask(event) {
+    event.stopPropagation(); // Prevent triggering the completeTask function
+    const task = event.target.parentElement;
+    taskList.removeChild(task);
+}
+
+// Handle task editing
+function editTask(event) {
+    event.stopPropagation(); // Prevent triggering the completeTask function
+    const taskItem = event.target.parentElement;
+    const currentTaskText = taskItem.firstChild.textContent;
+    const newTaskText = prompt('Edit the task:', currentTaskText);
+    
+    if (newTaskText !== null && newTaskText.trim() !== '') {
+        taskItem.firstChild.textContent = newTaskText.trim();
+    }
+}
