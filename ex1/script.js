@@ -1,4 +1,4 @@
-// Smooth Scroll for navigation links
+ // Smooth Scroll for Navigation Links
 document.querySelectorAll('nav ul li a').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -8,10 +8,10 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
     });
 });
 
-// Dynamic Hero Section Background Animation
-const hero = document.querySelector('.hero');
+// Dynamic Hero Section Background Effect
+const heroSection = document.querySelector('.hero');
 
 window.addEventListener('scroll', () => {
     let offset = window.pageYOffset;
-    hero.style.backgroundPositionY = `${offset * 0.5}px`;
+    heroSection.style.backgroundPositionY = `${offset * 0.5}px`;
 });
