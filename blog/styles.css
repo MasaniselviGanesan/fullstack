@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #e9f1f5; /* Light gray-blue */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  flex-direction: column;
+}
+
+.container {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 400px;
+  transition: transform 0.2s;
+  text-align: center;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+}
+
+h2, h3 {
+  margin-bottom: 20px;
+  color: #444; /* Darker gray */
+}
+
+input, textarea {
+  width: calc(100% - 20px);
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #bbb; /* Light gray */
+  border-radius: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #0056b3; /* Dark blue */
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+  outline: none;
+}
+
+button {
+  display: block;
+  width: calc(100% - 20px);
+  padding: 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#login-btn {
+  background-color: #007bff; /* Bright blue */
+  color: white;
+}
+
+#add-comment-btn {
+  background-color: #0056b3; /* Dark blue */
+  color: white;
+}
+
+#logout-btn {
+  background-color: #dc3545; /* Red */
+  color: white;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+#comments-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-box {
+  background-color: #f8f9fa; /* Light gray */
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.comment-box:hover {
+  background-color: #e2e6ea; /* Slightly darker gray */
+  transform: scale(1.02);
+}
+
+.like-dislike-btn {
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+}
+
+.like-dislike-btn.like {
+  background-color: #28a745; /* Green */
+  color: white;
+}
+
+.like-dislike-btn.dislike {
+  background-color: #dc3545; /* Red */
+  color: white;
+}
+
+.like-dislike-btn:hover {
+  filter: brightness(1.1);
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+#emoji-picker {
+  display: flex;
+  margin-bottom: 10px; /* Add space below the emoji picker */
+}
+
+.emoji {
+  cursor: pointer;
+  font-size: 24px; /* Size of the emojis */
+  margin: 0 5px; /* Space between emojis */
+}
+
+.comment-image {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.footer {
+  text-align: center;
+  color: #777; /* Medium gray */
+  font-size: 14px;
+  margin-top: 20px;
+}
